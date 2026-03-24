@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0c1726;
+            --panel: rgba(16, 32, 52, 0.84);
+            --panel-line: rgba(137, 183, 231, 0.22);
+            --text: #edf6ff;
+            --muted: #8db1d5;
+            --accent: #2ad1ff;
+            --good: #4cd17a;
+            --warn: #ffb84d;
+            --bad: #ff6b6b;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Manrope", sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at 14% 18%, rgba(42, 209, 255, 0.14), transparent 33%),
+                radial-gradient(circle at 90% 7%, rgba(44, 155, 255, 0.18), transparent 28%),
+                linear-gradient(135deg, #0a1421, var(--bg));
+            min-height: 100vh;
+        }
+
+        .shell {
+            width: min(1120px, 95vw);
+            margin: 20px auto;
+            display: grid;
+            gap: 16px;
+        }
+
+        .panel {
+            background: var(--panel);
+            border: 1px solid var(--panel-line);
+            border-radius: 16px;
+            box-shadow: 0 12px 34px rgba(4, 10, 20, 0.35);
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 18px 20px;
+            align-items: center;
+        }
+
+        .top-bar h1 {
+            margin: 0;
+            font-size: clamp(20px, 3vw, 30px);
+            letter-spacing: -0.02em;
+        }
+
+        .top-meta {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .btn-logout {
+            border: 1px solid rgba(255, 107, 107, 0.4);
+            color: #ffd5d5;
+            background: rgba(255, 107, 107, 0.1);
+            border-radius: 10px;
+            padding: 9px 12px;
+            font: inherit;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 16px;
+        }
+
+        .main-stack,
+        .side-stack {
+            display: grid;
+            gap: 16px;
+        }
+
+        .section {
+            padding: 18px;
+        }
+
+        .section h2 {
+            margin: 0 0 12px;
+            font-size: 17px;
+            letter-spacing: -0.01em;
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+        }
+
+        .metric-card {
+            background: rgba(6, 18, 32, 0.56);
+            border: 1px solid rgba(141, 177, 213, 0.2);
+            border-radius: 12px;
+            padding: 12px;
+        }
+
+        .metric-label {
+            margin: 0;
+            font-size: 12px;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .metric-value {
+            margin: 7px 0 4px;
+            font-size: 28px;
+            font-weight: 800;
+        }
+
+        .metric-delta {
+            margin: 0;
+            font-size: 12px;
+            color: #b8d4ef;
+        }
+
+        .metric-delta.positive {
+            color: var(--good);
+        }
+
+        .metric-delta.negative {
+            color: var(--bad);
+        }
+
+        .task-list,
+        .activity-list,
+        .commit-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            gap: 10px;
+        }
+
+        .task-item,
+        .activity-item,
+        .commit-item {
+            border: 1px solid rgba(141, 177, 213, 0.18);
+            background: rgba(7, 17, 31, 0.55);
+            border-radius: 12px;
+            padding: 10px 12px;
+        }
+
+        .task-item {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .task-main {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .task-title {
+            margin: 0;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .task-meta {
+            margin: 4px 0 0;
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        .task-right {
+            width: min(280px, 48%);
+            display: grid;
+            gap: 8px;
+            justify-items: end;
+        }
+
+        .status-pill {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            border-radius: 999px;
+            padding: 4px 9px;
+            border: 1px solid rgba(141, 177, 213, 0.25);
+            color: #d5e8fa;
+        }
+
+        .status-pill.done {
+            color: #d4ffe3;
+            border-color: rgba(76, 209, 122, 0.45);
+            background: rgba(76, 209, 122, 0.18);
+        }
+
+        .status-pill.blocked {
+            color: #ffd2d2;
+            border-color: rgba(255, 107, 107, 0.45);
+            background: rgba(255, 107, 107, 0.16);
+        }
+
+        .status-pill.review {
+            color: #ffe7be;
+            border-color: rgba(255, 184, 77, 0.45);
+            background: rgba(255, 184, 77, 0.12);
+        }
+
+        .status-pill.in-progress {
+            color: #d3f2ff;
+            border-color: rgba(42, 209, 255, 0.45);
+            background: rgba(42, 209, 255, 0.14);
+        }
+
+        .progress-track {
+            width: 100%;
+            height: 8px;
+            border-radius: 999px;
+            background: rgba(148, 176, 209, 0.2);
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            display: block;
+            height: 100%;
+            background: linear-gradient(90deg, #3cd9ff, #2ad1ff);
+        }
+
+        .btn-complete {
+            border: 0;
+            border-radius: 8px;
+            padding: 6px 10px;
+            background: #2ad1ff;
+            color: #062236;
+            font: inherit;
+            font-size: 12px;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        .activity-item,
+        .commit-item {
+            display: flex;
+            gap: 9px;
+            align-items: baseline;
+        }
+
+        .activity-time,
+        .commit-hash {
+            color: #88b3d8;
+            font-size: 12px;
+            font-weight: 700;
+            min-width: 68px;
+        }
+
+        .activity-text,
+        .commit-message {
+            color: #dceefe;
+            font-size: 13px;
+        }
+
+        .commit-author {
+            margin-left: auto;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        @media (max-width: 900px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+
+            .task-item {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .task-right {
+                width: 100%;
+                justify-items: stretch;
+            }
+
+            .top-bar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main id="dashboardApp" class="shell">
+        <header class="panel top-bar">
+            <div>
+                <h1>Welcome, <span id="welcomeName">User</span></h1>
+                <p id="welcomeRole" class="top-meta">Team Member</p>
+            </div>
+            <div class="top-meta">
+                <span id="dashboardClock"></span>
+                <button id="logoutBtn" class="btn-logout" type="button">Logout</button>
+            </div>
+        </header>
+
+        <section class="content">
+            <div class="main-stack">
+                <article class="panel section">
+                    <h2>Key Metrics</h2>
+                    <div id="metricGrid" class="metric-grid"></div>
+                </article>
+
+                <article class="panel section">
+                    <h2>Task Pipeline</h2>
+                    <ul id="taskList" class="task-list"></ul>
+                </article>
+            </div>
+
+            <div class="side-stack">
+                <article class="panel section">
+                    <h2>Recent Activity</h2>
+                    <ul id="activityList" class="activity-list"></ul>
+                </article>
+
+                <article class="panel section">
+                    <h2>Latest Commits</h2>
+                    <ul id="commitList" class="commit-list"></ul>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <script src="frontend/dashboard.js"></script>
+</body>
+</html>
