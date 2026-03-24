@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura AI Project - Feature Showcase Poster</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #030712;
+            --accent-blue: #3b82f6;
+            --accent-purple: #8b5cf6;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-dark);
+            color: #f3f4f6;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Modern Glassmorphism Card Style */
+        .glass-card {
+            background: rgba(17, 24, 39, 0.75);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(59, 130, 246, 0.5);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 50%, #f472b6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .bg-grid-dots {
+            background-image: radial-gradient(rgba(59, 130, 246, 0.2) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        /* Specialized Print Styles */
+        @media print {
+            @page {
+                size: A4 portrait;
+                margin: 0;
+            }
+            body {
+                background-color: #030712 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .print-container {
+                padding: 30px !important;
+                width: 100% !important;
+                max-width: none !important;
+            }
+            .glass-card {
+                background: rgba(17, 24, 39, 0.95) !important;
+                border: 1px solid rgba(255, 255, 255, 0.2) !important;
+                break-inside: avoid;
+            }
+        }
+
+        .feature-icon {
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.6rem;
+            margin-bottom: 0.4rem;
+            line-height: 1.4;
+        }
+
+        .feature-list li span:first-child {
+            color: #60a5fa;
+            font-weight: 800;
+            flex-shrink: 0;
+            font-size: 1.1em;
+        }
+        
+        .usp-tag {
+            background: rgba(59, 130, 246, 0.15);
+            border: 1px solid rgba(59, 130, 246, 0.4);
+            padding: 0.6rem 1.25rem;
+            border-radius: 99px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: #e2e8f0;
+        }
+    </style>
+</head>
+<body class="bg-grid-dots">
+    
+    <main class="print-container relative z-10 max-w-7xl mx-auto px-6 py-12">
+        
+        <!-- Header -->
+        <header class="text-center mb-12">
+            <div class="inline-block px-4 py-1.5 mb-6 text-[11px] font-bold tracking-[0.25em] text-blue-400 uppercase bg-blue-900/40 border border-blue-500/40 rounded-full">
+                Next-Generation Intelligent Ecosystem
+            </div>
+            <h1 class="text-6xl md:text-8xl font-extrabold mb-6 tracking-tighter">
+                AURA AI <span class="gradient-text">PROJECT</span>
+            </h1>
+            <p class="text-slate-300 text-xl max-w-3xl mx-auto leading-relaxed font-medium">
+                The ultimate AI-driven workspace. Orchestrating advanced RAG, system automation, and 
+                smart project tracking into one seamless professional hub.
+            </p>
+        </header>
+
+        <!-- USP Highlights Bar -->
+        <div class="flex flex-wrap justify-center gap-4 mb-14">
+            <div class="usp-tag">
+                <span class="text-blue-400">⚡</span> Role-Based Smart Emails
+            </div>
+            <div class="usp-tag">
+                <span class="text-purple-400">🔗</span> AI + GitHub Sync
+            </div>
+            <div class="usp-tag">
+                <span class="text-pink-400">✓</span> Interactive To-Do System
+            </div>
+            <div class="usp-tag">
+                <span class="text-green-400">🧠</span> Multi-LLM Orchestration
+            </div>
+        </div>
+
+        <!-- Features Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <!-- 1. Frontend Pages -->
+            <section class="glass-card p-7 rounded-3xl border-t-4 border-t-blue-500">
+                <div class="feature-icon bg-blue-500/20 text-blue-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                </div>
+                <h3 class="text-xl font-bold mb-4 text-white tracking-tight">Frontend Ecosystem</h3>
+                <ul class="text-slate-200 text-[13.5px] font-medium feature-list">
+                    <li><span>•</span> Intelligent Chat & Tools Interface</li>
+                    <li><span>•</span> Resume & Requirement Analyzers</li>
+                    <li><span>•</span> Technical Report & GitHub Views</li>
+                    <li><span>•</span> YouTube & Google Drive Links</li>
+                    <li><span>•</span> Documents Hub & Bulk Email Page</li>
+                    <li><span>•</span> Session History & Smart Navigation</li>
+                </ul>
+            </section>
+
+            <!-- 2. System Automation -->
+            <section class="glass-card p-7 rounded-3xl border-t-4 border-t-purple-500">
+                <div class="feature-icon bg-purple-500/20 text-purple-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+                </div>
+                <h3 class="text-xl font-bold mb-4 text-white tracking-tight">System Automation</h3>
+                <ul class="text-slate-200 text-[13.5px] font-medium feature-list">
+                    <li><span>•</span> Open Local Apps via Commands</li>
+                    <li><span>•</span> Automated URL & Web Launching</li>
+                    <li><span>•</span> Deep System File Search Engine</li>
+                    <li><span>•</span> Smart Timer & Task Scheduling</li>
+                    <li><span>•</span> Env-Controlled System Actions</li>
+                    <li><span>•</span> Background Process Management</li>
+                </ul>
+            </section>
+
+            <!-- 3. Core Assistant -->
+            <section class="glass-card p-7 rounded-3xl border-t-4 border-t-green-500">
+                <div class="feature-icon bg-green-500/20 text-green-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                </div>
+                <h3 class="text-xl font-bold mb-4 text-white tracking-tight">Core AI Assistant</h3>
+                <ul class="text-slate-200 text-[13.5px] font-medium feature-list">
+                    <li><span>•</span> Natural Language Fluid Chat</li>
+                    <li><span>•</span> Groq, Gemini, & Cohere Support</li>
+                    <li><span>•</span> Long-Term Conversation Memory</li>
+                    <li><span>•</span> Skills-Based Execution Logic</li>
+                    <li><span>•</span> High-Performance Async Event Queue</li>
+                    <li><span>•</span> Context-Aware Intent Detection</li>
+                </ul>
+            </section>
+
+            <!-- 4. Voice Features -->
+            <section class="glass-card p-7 rounded-3xl border-t-4 border-t-red-500">
+                <div class="feature-icon bg-red-500/20 text-red-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line></svg>
+                </div>
+                <h3 class="text-xl font-bold mb-4 text-white tracking-tight">Voice & Accessibility</h3>
+                <ul class="text-slate-200 text-[13.5px] font-medium feature-list">
+                    <li><span>•</span> Neural Speech-to-Text (STT)</li>
+                    <li><span>•</span> Natural Text-to-Speech (TTS)</li>
+                    <li><span>•</span> Hands-Free Voice Toggle Mode</li>
+                    <li><span>•</span> Ergonomic Keyboard Shortcuts</li>
+                    <li><span>•</span> Visual Feedback for Voice Input</li>
+                    <li><span>•</span> Real-time Audio Stream Analysis</li>
+                </ul>
+            </section>
+
+            <!-- 5. Document + RAG -->
+            <section class="glass-card p-7 rounded-3xl border-t-4 border-t-yellow-500">
+                <div class="feature-icon bg-yellow-500/20 text-yellow-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                </div>
+                <h3 class="text-xl font-bold mb-4 text-white tracking-tight">Document RAG Engine</h3>
+                <ul class="text-slate-200 text-[13.5px] font-medium feature-list">
+                    <li><span>•</span> Multi-File Upload & Indexing</li>
+                    <li><span>•</span> Session-Aware Doc Tracking</li>
+                    <li><span>•</span> RAG-Backed Contextual Q&A</li>
+                    <li><span>•</span> Req. Analyzer Context Integration</li>
+                    <li><span>•</span> Intelligent Logic Fallback Behavior</li>
+                    <li><span>•</span> Semantic Document Chunking</li>
+                </ul>
+            </section>
+
+            <!-- 6. Requirement Analyzer (Advanced) -->
+            <section class="glass-card border-l-8 border-l-blue-500 p-7 rounded-3xl bg-blue-900/20">
+                <div class="feature-icon bg-blue-500/20 text-blue-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
+                </div>
+                <h3 class="text-xl font-bold mb-4 text-blue-100 tracking-tight">Requirement Architect</h3>
+                <ul class="text-white text-[13.5px] font-semibold feature-list">
+                    <li><span>•</span> AI-Driven Summary & Feature List</li>
+                    <li><span>•</span> Tech Stack & Timeline Generation</li>
+                    <li><span>•</span> Project Cost & Proposal Engine</li>
+                    <li><span>•</span> Interactive To-Do Project Workflow</li>
+                    <li><span>•</span> Role-Based Smart Assignments</li>
+                    <li><span>•</span> SRS Report & Email Drafting</li>
+                </ul>
+            </section>
+
+            <!-- 7. Email System -->
+            <section class="glass-card p-7 rounded-3xl border-t-4 border-t-pink-500">
+                <div class="feature-icon bg-pink-500/20 text-pink-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                </div>
+                <h3 class="text-xl font-bold mb-4 text-white tracking-tight">Advanced Emailing</h3>
+                <ul class="text-slate-200 text-[13.5px] font-medium feature-list">
+                    <li><span>•</span> Single & Excel-Based Bulk Uploads</li>
+                    <li><span>•</span> AI-Drafted Role-Based Templates</li>
+                    <li><span>•</span> HTML/Plain Text Hybrid Support</li>
+                    <li><span>•</span> Editable Drafts & Manual Additions</li>
+                    <li><span>•</span> Custom Template Design System</li>
+                    <li><span>•</span> Comprehensive History & Draft Logs</li>
+                </ul>
+            </section>
+
+            <!-- 8. GitHub Smart Sync -->
+            <section class="glass-card p-7 rounded-3xl border-t-4 border-t-indigo-500">
+                <div class="feature-icon bg-indigo-500/20 text-indigo-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                </div>
+                <h3 class="text-xl font-bold mb-4 text-white tracking-tight">GitHub Intelligence</h3>
+                <ul class="text-slate-200 text-[13.5px] font-medium feature-list">
+                    <li><span>•</span> Real-time Repository Insights</li>
+                    <li><span>•</span> Tech & Business Report Automation</li>
+                    <li><span>•</span> Commit-to-Task Match Engine</li>
+                    <li><span>•</span> Secure Private Repo Token Support</li>
+                    <li><span>•</span> Dedicated Repo Isolation Hub</li>
+                    <li><span>•</span> Automated Development Progress Logs</li>
+                </ul>
+            </section>
+
+            <!-- 9. Smart AI Features -->
+            <section class="glass-card border-l-8 border-l-purple-500 p-7 rounded-3xl bg-purple-900/20">
+                <div class="feature-icon bg-purple-500/20 text-purple-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                </div>
+                <h3 class="text-xl font-bold mb-4 text-purple-100 tracking-tight">Smart Monitoring</h3>
+                <ul class="text-white text-[13.5px] font-semibold feature-list">
+                    <li><span>•</span> Automatic Missing Task Detection</li>
+                    <li><span>•</span> Predictive Project Risk Alerts</li>
+                    <li><span>•</span> Timeline & Task Completion Gen</li>
+                    <li><span>•</span> To-Do + GitHub Commit Sync</li>
+                    <li><span>•</span> Automated Progress Tracking</li>
+                    <li><span>•</span> Smart Dependency Management</li>
+                </ul>
+            </section>
+
+            <!-- 10. Dashboard & Analytics -->
+            <section class="glass-card p-7 rounded-3xl border-t-4 border-t-cyan-500 lg:col-span-1">
+                <div class="feature-icon bg-cyan-500/20 text-cyan-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                </div>
+                <h3 class="text-xl font-bold mb-4 text-white tracking-tight">Project Analytics</h3>
+                <ul class="text-slate-200 text-[13.5px] font-medium feature-list">
+                    <li><span>•</span> Total, Completed & Pending Stats</li>
+                    <li><span>•</span> Deleted Task History & Recovery</li>
+                    <li><span>•</span> Role-Wise Development Progress</li>
+                    <li><span>•</span> Smart Interaction Tracking</li>
+                    <li><span>•</span> Real-time Metric Visualizations</li>
+                    <li><span>•</span> Performance & Efficiency Reports</li>
+                </ul>
+            </section>
+
+        </div>
+
+        <!-- Footer -->
+        <footer class="mt-14 text-center text-slate-500 pt-10 border-t border-slate-800">
+            <div class="flex flex-wrap justify-center gap-8 mb-6">
+                <span class="text-[10px] uppercase tracking-[0.3em] font-extrabold text-blue-400/70">● High Availability Cluster</span>
+                <span class="text-[10px] uppercase tracking-[0.3em] font-extrabold text-purple-400/70">● Neural Security Layers</span>
+                <span class="text-[10px] uppercase tracking-[0.3em] font-extrabold text-green-400/70">● Multi-LLM Orchestration</span>
+            </div>
+            <p class="text-[11px] font-bold tracking-[0.1em] text-slate-400">Aura AI Project Portfolio &copy; 2024 | Built for the Future</p>
+        </footer>
+
+    </main>
+
+</body>
+</html>
