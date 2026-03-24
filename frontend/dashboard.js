@@ -1,5 +1,8 @@
 "use strict";
 
+const TOKEN_KEY = "auraAuthToken";
+const USER_KEY = "auraAuthUser";
+
 const dashboardData = {
     user: {
         name: "Mansi",
@@ -213,6 +216,12 @@ function updateClock(clockNode) {
 }
 
 function loadDashboard(rootSelector = "#dashboardApp") {
+    const authToken = localStorage.getItem(TOKEN_KEY);
+    if (!authToken) {
+        window.location.href = "p2.html";
+        return;
+    }
+
     const rootNode = document.querySelector(rootSelector);
     if (!rootNode) {
         return;
@@ -230,12 +239,25 @@ function loadDashboard(rootSelector = "#dashboardApp") {
         return;
     }
 
+    let activeUser = dashboardData.user;
+    try {
+        const rawUser = localStorage.getItem(USER_KEY);
+        if (rawUser) {
+            const parsedUser = JSON.parse(rawUser);
+            if (parsedUser && parsedUser.name) {
+                activeUser = parsedUser;
+            }
+        }
+    } catch (error) {
+        console.warn("Unable to parse auth user", error);
+    }
+
     if (headerName) {
-        headerName.textContent = dashboardData.user.name;
+        headerName.textContent = activeUser.name || dashboardData.user.name;
     }
 
     if (headerRole) {
-        headerRole.textContent = dashboardData.user.role;
+        headerRole.textContent = activeUser.role || dashboardData.user.role;
     }
 
     renderMetrics(metricGrid, dashboardData.metrics);
@@ -244,6 +266,17 @@ function loadDashboard(rootSelector = "#dashboardApp") {
     renderCommits(commitList, dashboardData.commits);
 
     bindTaskActions(rootNode);
+
+    const logoutButton = rootNode.querySelector("#logoutBtn");
+    if (logoutButton) {
+        logoutButton.addEventListener("click", () => {
+            localStorage.removeItem(TOKEN_KEY);
+            localStorage.removeItem(USER_KEY);
+            localStorage.removeItem("auraRememberSession");
+            window.location.href = "p2.html";
+        });
+    }
+
     updateClock(clockNode);
     window.setInterval(() => updateClock(clockNode), 30000);
 }

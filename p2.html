@@ -3,364 +3,351 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aura AI Project - Premium Showcase Poster</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Aura Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #020617;
-            --card-bg: rgba(15, 23, 42, 0.8);
+            --bg-1: #041221;
+            --bg-2: #06192c;
+            --card: rgba(9, 27, 45, 0.82);
+            --line: rgba(141, 182, 226, 0.25);
+            --text: #e9f4ff;
+            --muted: #8eb2d3;
+            --accent: #4cc9f0;
+            --accent-strong: #00b4d8;
+            --danger: #ff6b6b;
+            --ok: #43d17d;
+        }
+
+        * {
+            box-sizing: border-box;
         }
 
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--bg-dark);
-            color: #f1f5f9;
             margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-        }
-
-        /* Ambient Background Mesh */
-        .mesh-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: 
-                radial-gradient(circle at 0% 0%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 100% 100%, rgba(168, 85, 247, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 1) 0%, rgba(2, 6, 23, 1) 100%);
-        }
-
-        .grid-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                              linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-        }
-
-        /* Card Styling */
-        .module-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 24px;
-            padding: 2rem;
-            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-            position: relative;
+            min-height: 100vh;
+            font-family: "Space Grotesk", sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at 10% 15%, rgba(76, 201, 240, 0.18), transparent 35%),
+                radial-gradient(circle at 85% 85%, rgba(17, 138, 178, 0.24), transparent 35%),
+                linear-gradient(135deg, var(--bg-1), var(--bg-2));
+            display: grid;
+            place-items: center;
             overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
         }
 
-        .module-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: currentColor;
-            opacity: 0.5;
-        }
-
-        .module-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
-        }
-
-        .module-card:hover::after {
-            content: '';
-            position: absolute;
+        body::before {
+            content: "";
+            position: fixed;
             inset: 0;
-            background: radial-gradient(circle at top right, currentColor, transparent 100px);
-            opacity: 0.05;
+            background-image:
+                linear-gradient(rgba(172, 212, 255, 0.06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(172, 212, 255, 0.06) 1px, transparent 1px);
+            background-size: 44px 44px;
             pointer-events: none;
         }
 
-        /* Color Variations */
-        .c-blue { color: #60a5fa; }
-        .c-purple { color: #a78bfa; }
-        .c-green { color: #4ade80; }
-        .c-red { color: #f87171; }
-        .c-yellow { color: #fbbf24; }
-        .c-pink { color: #f472b6; }
-        .c-indigo { color: #818cf8; }
-        .c-cyan { color: #22d3ee; }
-        .c-orange { color: #fb923c; }
-
-        .gradient-heading {
-            background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .auth-shell {
+            width: min(920px, 94vw);
+            min-height: 580px;
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            background: var(--card);
+            backdrop-filter: blur(12px);
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            box-shadow: 0 24px 80px rgba(0, 8, 18, 0.45);
+            overflow: hidden;
+            animation: rise 0.55s ease-out;
         }
 
-        /* List Styling */
+        @keyframes rise {
+            from {
+                transform: translateY(16px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .brand-panel {
+            padding: 42px;
+            border-right: 1px solid var(--line);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .chip {
+            display: inline-block;
+            width: fit-content;
+            padding: 7px 12px;
+            border-radius: 999px;
+            font-size: 12px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #84dfff;
+            background: rgba(76, 201, 240, 0.15);
+            border: 1px solid rgba(76, 201, 240, 0.35);
+        }
+
+        h1 {
+            font-family: "Sora", sans-serif;
+            margin: 18px 0 12px;
+            font-size: clamp(28px, 4.5vw, 42px);
+            line-height: 1.08;
+            letter-spacing: -0.03em;
+        }
+
+        .brand-panel p {
+            margin: 0;
+            color: var(--muted);
+            max-width: 34ch;
+            line-height: 1.55;
+        }
+
         .feature-list {
-            margin-top: 1rem;
-            list-style: none;
+            margin: 30px 0 0;
             padding: 0;
+            list-style: none;
+            display: grid;
+            gap: 12px;
         }
 
         .feature-list li {
             display: flex;
-            align-items: flex-start;
-            gap: 0.75rem;
-            margin-bottom: 0.6rem;
-            font-size: 0.9rem;
-            line-height: 1.5;
-            color: #cbd5e1;
-            font-weight: 500;
+            align-items: center;
+            gap: 10px;
+            color: #c8e6ff;
+            font-size: 14px;
         }
 
-        .feature-list li svg {
-            flex-shrink: 0;
-            margin-top: 0.2rem;
-            width: 14px;
-            height: 14px;
-            color: currentColor;
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+            box-shadow: 0 0 0 4px rgba(76, 201, 240, 0.16);
         }
 
-        /* USP Tags */
-        .usp-badge {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 0.6rem 1.25rem;
-            border-radius: 100px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            letter-spacing: 0.025em;
+        .form-panel {
+            padding: 36px 32px;
             display: flex;
             align-items: center;
-            gap: 0.6rem;
-            transition: all 0.3s ease;
         }
 
-        .usp-badge:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.2);
+        form {
+            width: 100%;
+            display: grid;
+            gap: 16px;
         }
 
-        @media print {
-            .mesh-bg, .grid-overlay { display: none; }
-            body { background: #000; }
-            .module-card { break-inside: avoid; border: 1px solid #333; }
+        .form-title {
+            margin: 0;
+            font-family: "Sora", sans-serif;
+            font-size: 24px;
+            letter-spacing: -0.02em;
+        }
+
+        .form-sub {
+            margin: 0;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .input-group {
+            display: grid;
+            gap: 8px;
+        }
+
+        label {
+            font-size: 13px;
+            color: #b8daf7;
+            font-weight: 600;
+        }
+
+        input {
+            width: 100%;
+            border: 1px solid rgba(130, 181, 231, 0.28);
+            background: rgba(0, 17, 31, 0.45);
+            color: var(--text);
+            border-radius: 12px;
+            padding: 12px 14px;
+            font: inherit;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: rgba(76, 201, 240, 0.9);
+            box-shadow: 0 0 0 3px rgba(76, 201, 240, 0.18);
+        }
+
+        .password-wrap {
+            position: relative;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            border: 0;
+            color: #a8d6f7;
+            background: transparent;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+        }
+
+        .meta-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .remember {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .remember input {
+            width: 16px;
+            height: 16px;
+            accent-color: var(--accent);
+            border-radius: 4px;
+            padding: 0;
+            box-shadow: none;
+        }
+
+        .submit-btn {
+            border: 0;
+            border-radius: 12px;
+            padding: 13px;
+            font: inherit;
+            font-weight: 700;
+            color: #052033;
+            background: linear-gradient(135deg, #7be7ff, #39d8ff);
+            cursor: pointer;
+            transition: transform 0.2s ease, filter 0.2s ease;
+        }
+
+        .submit-btn:hover {
+            filter: brightness(1.04);
+            transform: translateY(-1px);
+        }
+
+        .submit-btn:disabled {
+            cursor: not-allowed;
+            opacity: 0.75;
+            transform: none;
+        }
+
+        .status {
+            min-height: 22px;
+            margin: 0;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .status.error {
+            color: var(--danger);
+        }
+
+        .status.success {
+            color: var(--ok);
+        }
+
+        .demo-note {
+            margin: 0;
+            font-size: 12px;
+            color: #96bbdd;
+            line-height: 1.4;
+        }
+
+        @media (max-width: 800px) {
+            .auth-shell {
+                grid-template-columns: 1fr;
+            }
+
+            .brand-panel {
+                border-right: 0;
+                border-bottom: 1px solid var(--line);
+                padding: 30px 26px;
+                gap: 24px;
+            }
+
+            .form-panel {
+                padding: 30px 24px;
+            }
+
+            .feature-list {
+                margin-top: 10px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="mesh-bg"></div>
-    <div class="grid-overlay"></div>
-
-    <main class="max-w-7xl mx-auto px-6 py-16">
-        
-        <!-- Header Section -->
-        <header class="text-center mb-16">
-            <div class="inline-flex items-center gap-2 px-4 py-1.5 mb-8 text-[11px] font-extrabold tracking-[0.3em] text-blue-400 uppercase bg-blue-500/10 border border-blue-500/20 rounded-full">
-                <span class="relative flex h-2 w-2">
-                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                    <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
-                </span>
-                Intelligence Unbound
-            </div>
-            <h1 class="text-6xl md:text-8xl font-black mb-8 tracking-tighter italic">
-                AURA <span class="gradient-heading">AI PROJECT</span>
-            </h1>
-            <p class="text-slate-400 text-xl max-w-3xl mx-auto leading-relaxed font-medium">
-                The definitive professional ecosystem. Orchestrating advanced RAG, 
-                neural automation, and smart project synchronization in one hub.
-            </p>
-        </header>
-
-        <!-- USP Bar -->
-        <div class="flex flex-wrap justify-center gap-4 mb-16">
-            <div class="usp-badge border-blue-500/30 text-blue-400">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
-                ROLE-BASED SMART EMAILS
-            </div>
-            <div class="usp-badge border-purple-500/30 text-purple-400">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                AI + GITHUB SYNC
-            </div>
-            <div class="usp-badge border-pink-500/30 text-pink-400">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
-                INTERACTIVE TO-DO SYSTEM
-            </div>
-        </div>
-
-        <!-- Dashboard Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            
-            <!-- 1. Frontend Pages -->
-            <div class="module-card c-blue">
-                <h3 class="text-xl font-extrabold text-white mb-2">Frontend Ecosystem</h3>
-                <p class="text-blue-400/80 text-xs font-bold uppercase tracking-wider mb-4">Centralized Control Hub</p>
+    <main class="auth-shell">
+        <section class="brand-panel">
+            <div>
+                <span class="chip">Aura Secure Access</span>
+                <h1>Login to continue your workflow.</h1>
+                <p>
+                    Access project dashboards, task metrics, and repo activity from a unified control center.
+                </p>
                 <ul class="feature-list">
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> Chat Interface & Advanced Tools</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> Resume & Requirement Analyzers</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> Technical Report & GitHub Views</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> YouTube & Drive Direct Integration</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> Bulk Email & Doc Management</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> Interactive Session History logs</li>
+                    <li><span class="dot"></span> Single-step session sign in</li>
+                    <li><span class="dot"></span> Fast dashboard redirect after authentication</li>
+                    <li><span class="dot"></span> Local token persistence for demo workflow</li>
                 </ul>
             </div>
+        </section>
 
-            <!-- 2. System Automation -->
-            <div class="module-card c-purple">
-                <h3 class="text-xl font-extrabold text-white mb-2">System Automation</h3>
-                <p class="text-purple-400/80 text-xs font-bold uppercase tracking-wider mb-4">Native Hardware Control</p>
-                <ul class="feature-list">
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> Launch Local Apps via Voice/Text</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> Automated URL Web Execution</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> Neural System File Search Engine</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> Smart Timer & Action Scheduling</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> Env-Aware Command Triggers</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> Background Service Management</li>
-                </ul>
-            </div>
+        <section class="form-panel">
+            <form id="loginForm" novalidate>
+                <h2 class="form-title">Welcome back</h2>
+                <p class="form-sub">Use your account credentials to sign in.</p>
 
-            <!-- 3. Core Assistant -->
-            <div class="module-card c-green">
-                <h3 class="text-xl font-extrabold text-white mb-2">Core AI Engine</h3>
-                <p class="text-green-400/80 text-xs font-bold uppercase tracking-wider mb-4">Intelligent Orchestration</p>
-                <ul class="feature-list">
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> Multi-Model: Groq, Gemini, Cohere</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> Advanced Natural Language Logic</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> Long-Term Conversation Memory</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> Skills-Based Command Dispatch</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> High-Throughput Async Queue</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> Cross-Session Persistence</li>
-                </ul>
-            </div>
-
-            <!-- 4. Voice Features -->
-            <div class="module-card c-red">
-                <h3 class="text-xl font-extrabold text-white mb-2">Voice Interface</h3>
-                <p class="text-red-400/80 text-xs font-bold uppercase tracking-wider mb-4">Seamless Accessibility</p>
-                <ul class="feature-list">
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> Neural Speech-to-Text (STT)</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> High-Fidelity Text-to-Speech (TTS)</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> Hands-Free Voice Wake Toggle</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> Ergonomic Keyboard Shortcuts</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> Low-Latency Audio Stream</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> Visual Sound-Wave Indicators</li>
-                </ul>
-            </div>
-
-            <!-- 5. Document + RAG -->
-            <div class="module-card c-yellow">
-                <h3 class="text-xl font-extrabold text-white mb-2">Knowledge RAG</h3>
-                <p class="text-yellow-400/80 text-xs font-bold uppercase tracking-wider mb-4">Semantic Context Layer</p>
-                <ul class="feature-list">
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> Bulk Document Indexing & Storage</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> Session-Aware Context Tracking</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> Deep RAG-Backed Q&A Engine</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> Req. Analyzer Context Linkage</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> Robust Multi-Step Fallback Logic</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> Knowledge Graph Visualization</li>
-                </ul>
-            </div>
-
-            <!-- 6. Requirement Analyzer -->
-            <div class="module-card c-indigo shadow-[0_0_30px_rgba(129,140,248,0.1)] border-indigo-500/30">
-                <h3 class="text-xl font-extrabold text-white mb-2">Requirement Architect</h3>
-                <p class="text-indigo-400/80 text-xs font-bold uppercase tracking-wider mb-4">Advanced Project Scoping</p>
-                <ul class="feature-list">
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> AI-Driven Summary & Features</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> Automated Tech Stack Mapping</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> Dynamic Cost & Timeline Engine</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> Role-Based Task Assignments</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> SRS Report Generator & Download</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> AI Proposal & Email Auto-Drafting</li>
-                </ul>
-            </div>
-
-            <!-- 7. Email System -->
-            <div class="module-card c-pink">
-                <h3 class="text-xl font-extrabold text-white mb-2">Email Smart Suite</h3>
-                <p class="text-pink-400/80 text-xs font-bold uppercase tracking-wider mb-4">Strategic Communication</p>
-                <ul class="feature-list">
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> Excel-Based Bulk Upload Sending</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> AI-Drafted Role-Specific Logic</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> Custom HTML Template Support</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> Live Editable AI Email Drafts</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> Detailed Communication History</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> Multi-Client Manual Override</li>
-                </ul>
-            </div>
-
-            <!-- 8. GitHub Sync -->
-            <div class="module-card c-cyan">
-                <h3 class="text-xl font-extrabold text-white mb-2">GitHub Smart Sync</h3>
-                <p class="text-cyan-400/80 text-xs font-bold uppercase tracking-wider mb-4">Developer Alignment</p>
-                <ul class="feature-list">
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> Real-time Repo Activity Insights</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> Automated Technical Report Gen</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> Commit-to-Task Semantic Match</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> Private Repo Token Isolation</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> Dedicated Developer Statistics</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> Live Commit Webhook Monitoring</li>
-                </ul>
-            </div>
-
-            <!-- 9. AI Monitoring -->
-            <div class="module-card c-purple shadow-[0_0_30px_rgba(167,139,250,0.1)] border-purple-500/30">
-                <h3 class="text-xl font-extrabold text-white mb-2">Neural Monitoring</h3>
-                <p class="text-purple-400/80 text-xs font-bold uppercase tracking-wider mb-4">Predictive Oversight</p>
-                <ul class="feature-list">
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> Automatic Missing Task Detection</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> Project Risk & Bottleneck Alerts</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> Real-time Timeline Generation</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> To-Do + GitHub Commit Sync</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> Automated Progress Evaluation</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> Task Completion Neural Check</li>
-                </ul>
-            </div>
-
-            <!-- 10. Dashboard -->
-            <div class="module-card c-orange">
-                <h3 class="text-xl font-extrabold text-white mb-2">Live Dashboard</h3>
-                <p class="text-orange-400/80 text-xs font-bold uppercase tracking-wider mb-4">Analytics Visualization</p>
-                <ul class="feature-list">
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> Total / Completed / Pending Tasks</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> Role-Wise Completion Progress</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> Deleted Task History & Recovery</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> Live Interaction Performance Logs</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> Smart Tracking Heatmaps</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> Custom Analytic Export Support</li>
-                </ul>
-            </div>
-
-        </div>
-
-        <!-- Footer -->
-        <footer class="mt-20 border-t border-slate-800 pt-10 text-center">
-            <div class="flex flex-wrap justify-center gap-10 mb-8 opacity-60">
-                <div class="flex items-center gap-2 text-[10px] uppercase tracking-widest font-bold">
-                    <span class="w-2 h-2 rounded-full bg-blue-500"></span>
-                    High Availability
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input id="email" name="email" type="email" placeholder="you@company.com" autocomplete="email" required>
                 </div>
-                <div class="flex items-center gap-2 text-[10px] uppercase tracking-widest font-bold">
-                    <span class="w-2 h-2 rounded-full bg-purple-500"></span>
-                    Neural Encryption
+
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <div class="password-wrap">
+                        <input id="password" name="password" type="password" placeholder="Enter password" autocomplete="current-password" required>
+                        <button class="toggle-password" id="passwordToggle" type="button">SHOW</button>
+                    </div>
                 </div>
-                <div class="flex items-center gap-2 text-[10px] uppercase tracking-widest font-bold">
-                    <span class="w-2 h-2 rounded-full bg-green-500"></span>
-                    Quantum RAG Layer
+
+                <div class="meta-row">
+                    <label class="remember" for="rememberMe">
+                        <input id="rememberMe" name="rememberMe" type="checkbox">
+                        Remember me
+                    </label>
+                    <span>Demo Auth</span>
                 </div>
-            </div>
-            <p class="text-[10px] font-bold tracking-[0.2em] text-slate-500">AURA AI PROJECT PORTFOLIO &copy; 2026 | THE FUTURE OF WORK</p>
-        </footer>
+
+                <button id="loginButton" class="submit-btn" type="submit">Sign In</button>
+                <p id="loginMessage" class="status" aria-live="polite"></p>
+                <p class="demo-note">Demo credentials: admin@test.com / 1234</p>
+            </form>
+        </section>
     </main>
+
+    <script src="backend/auth.js"></script>
+    <script src="frontend/login.js"></script>
 </body>
 </html>
